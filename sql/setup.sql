@@ -22,13 +22,13 @@ DROP TABLE IF EXISTS animals;
 
 CREATE TABLE animals (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
-  commonName VARCHAR NOT NULL,
+  name VARCHAR NOT NULL,
   family VARCHAR NOT NULL,
   funFact VARCHAR NOT NULL,
   url VARCHAR NOT NULL
 );
 
-INSERT INTO animals (commonName, family, funFact, url)
+INSERT INTO animals (name, family, funFact, url)
 VALUES 
 ('Sugar Glider', 'Petauridae', 'When moving between trees, this animal uses its gliding membrane, found between its wrists and ankles. When flying, the animal is able to control and change the size and shape of the membrane by changing the position of its limbs. Meanwhile, the tail helps them manage the flight, acting as a rudder.', 'https://animalia.bio/sugar-glider?collection=37'),
 ('Bearded Dragon', 'Agamidae', 'These lizards got their name due to their ability of making their throat look like a beard by inflating and puffing it out as well as the ability of their throat to turn to black when threatened.', 'https://animalia.bio/central-bearded-dragon'),

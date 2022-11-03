@@ -1,16 +1,55 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
-// const request = require('supertest');
-// const app = require('../lib/app');
+const request = require('supertest');
+const app = require('../lib/app');
+const { animals } = require('../lib/animals-data.js');
+// const plants = require('../lib/plants-data.js');
 
-describe('backend-express-template routes', () => {
+describe('animals routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('example test - delete me!', () => {
-    expect(1).toEqual(1);
+
+  it('/animals should return a list of animals', async () => {
+    const res = await request(app).get('/animals');
+    const expected = animals.map((animal) => {
+      return { id: animal.id, name: animal.name };
+    });
+    expect(res.body).toEqual(expected);
   });
   afterAll(() => {
     pool.end();
   });
 });
+
+// describe('cats routes', () => {
+//   beforeEach(() => {
+//     return setup(pool);
+//   });
+
+//   it('/cats should return a list of cats', async () => {
+//     const res = await request(app).get('/cats');
+//     const expected = cats.map((cat) => {
+//       return { id: cat.id, name: cat.name };
+//     });
+//     expect(res.body).toEqual(expected);
+//   });
+
+//   it('/cats/:id should return cat detail', async () => {
+//     const res = await request(app).get('/cats/1');
+//     const felix = {
+//       id: '1',
+//       name: 'Felix',
+//       type: 'Tuxedo',
+//       url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Felix_the_cat.svg/200px-Felix_the_cat.svg.png',
+//       year: 1892,
+//       lives: 3,
+//       isSidekick: false,
+//     };
+//     expect(res.body).toEqual(felix);
+//   });
+
+//   afterAll(() => {
+//     pool.end();
+//   });
+// });
