@@ -17,6 +17,20 @@ describe('animals routes', () => {
     });
     expect(res.body).toEqual(expected);
   });
+
+  it('/animals/:id should return animal detail', async () => {
+    const res = await request(app).get('/animals/1');
+    const sugarGlider = {
+      id: '1',
+      name: 'Sugar Glider',
+      family: 'Petauridae',
+      funFact:
+        'When moving between trees, this animal uses its gliding membrane, found between its wrists and ankles. When flying, the animal is able to control and change the size and shape of the membrane by changing the position of its limbs. Meanwhile, the tail helps them manage the flight, acting as a rudder.',
+      url: 'https://animalia.bio/sugar-glider?collection=37',
+    };
+    expect(res.body).toEqual(sugarGlider);
+  });
+
   afterAll(() => {
     pool.end();
   });
