@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const { animals } = require('../lib/animals-data.js');
-// const plants = require('../lib/plants-data.js');
+const { plants } = require('../lib/plants-data.js');
 
 describe('animals routes', () => {
   beforeEach(() => {
@@ -29,6 +29,14 @@ describe('animals routes', () => {
       url: 'https://animalia.bio/sugar-glider?collection=37',
     };
     expect(res.body).toEqual(sugarGlider);
+  });
+
+  it('/plants should return a list of plants', async () => {
+    const res = await request(app).get('/plants');
+    const expected = plants.map((plant) => {
+      return { id: plant.id, commonName: plant.commonName };
+    });
+    expect(res.body).toEqual(expected);
   });
 
   afterAll(() => {
