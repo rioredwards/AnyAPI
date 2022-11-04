@@ -4,13 +4,13 @@ DROP TABLE IF EXISTS plants;
 
 CREATE TABLE plants (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
-  scientificName VARCHAR NOT NULL,
-  commonName VARCHAR NOT NULL,
+  "scientific-name" VARCHAR NOT NULL,
+  "common-name" VARCHAR NOT NULL,
   type VARCHAR NOT NULL,
   url VARCHAR NOT NULL
 );
 
-INSERT INTO plants (scientificName, commonName, type, url)
+INSERT INTO plants ("scientific-name", "common-name", type, url)
 VALUES 
 ('Monstera Adansonii', 'Swiss cheese plant', 'Tropical perennial', 'https://www.thespruce.com/grow-monstera-adansonii-swiss-cheese-plant-1902774'),
 ('Philodendron hederaceum Rio', 'Philodendron Rio', 'Perennial, vine', 'https://www.thespruce.com/philodendron-rio-growing-guide-5235405'),
@@ -24,11 +24,11 @@ CREATE TABLE animals (
   id BIGINT GENERATED ALWAYS AS IDENTITY,
   name VARCHAR NOT NULL,
   family VARCHAR NOT NULL,
-  funFact VARCHAR NOT NULL,
+  "fun-fact" VARCHAR NOT NULL,
   url VARCHAR NOT NULL
 );
 
-INSERT INTO animals (name, family, funFact, url)
+INSERT INTO animals (name, family, "fun-fact", url)
 VALUES 
 ('Sugar Glider', 'Petauridae', 'When moving between trees, this animal uses its gliding membrane, found between its wrists and ankles. When flying, the animal is able to control and change the size and shape of the membrane by changing the position of its limbs. Meanwhile, the tail helps them manage the flight, acting as a rudder.', 'https://animalia.bio/sugar-glider?collection=37'),
 ('Bearded Dragon', 'Agamidae', 'These lizards got their name due to their ability of making their throat look like a beard by inflating and puffing it out as well as the ability of their throat to turn to black when threatened.', 'https://animalia.bio/central-bearded-dragon'),
