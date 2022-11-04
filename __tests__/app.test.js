@@ -39,6 +39,18 @@ describe('animals routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('/plants/:id should return plant detail', async () => {
+    const res = await request(app).get('/plants/1');
+    const monstera = {
+      id: '1',
+      scientificName: 'Monstera Adansonii',
+      commonName: 'Swiss cheese plant',
+      type: 'Tropical perennial',
+      url: 'https://www.thespruce.com/grow-monstera-adansonii-swiss-cheese-plant-1902774',
+    };
+    expect(res.body).toEqual(monstera);
+  });
+
   afterAll(() => {
     pool.end();
   });
